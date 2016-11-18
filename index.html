@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="components/idom-component/idom-component.html">
+    <link rel="import" href="components/polymer-component/polymer-component.html">
+  </head>
+  <body>
+    <input id="input" type="text">
+    <input id="checkbox" type="checkbox">
+    <div id="container"></div>
+    <script>
+      const createComponent = function(name) {
+         container.appendChild(document.createElement(name));
+      };
+      const createIdomComponent = () => createComponent('idom-component');
+      const createPolymerComponent = () => createComponent('polymer-component');
+
+      const updateText = function(text) {
+        for (let i = 0; i < components.length; i += 1) {
+          const component = components[i];
+          component.data = {
+            message: text
+          };
+        }
+      };
+
+      const updateStrong = function(isStrong) {
+        for (let i = 0; i < components.length; i += 1) {
+          const component = components[i];
+          component.isStrong = isStrong;
+        }
+      };
+
+      const container = document.getElementById('container');
+      const input = document.getElementById('input');
+      const checkbox = document.getElementById('checkbox');
+      const components = container.children;
+
+      function createComponents() {
+        createIdomComponent();
+        createPolymerComponent();
+      }
+
+      createComponents();
+
+      setTimeout(createComponents);
+      setTimeout(createComponents, 20);
+      setTimeout(createComponents, 40);
+      setTimeout(createComponents, 60);
+
+      window.addEventListener('WebComponentsReady', function() {
+        updateText(input.value);
+        updateStrong(checkbox.checked);
+
+        input.addEventListener('input', function(e) {
+          updateText(e.target.value);
+        });
+
+        checkbox.addEventListener('change', function(e) {
+          updateStrong(e.target.checked);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="polymer-component">
+  <template>
+    <style>
+      :host {
+        display: block;
+        color: #e65100;
+      }
+
+      strong {
+        color: #0b8043;
+      }
+    </style>
+    <dom-if if="{{isStrong}}">
+      <template>
+        <strong>{{data.message}}</strong>
+      </template>
+    </dom-if>
+    <dom-if if="{{!isStrong}}">
+      <template>
+        <span>{{data.message}}</span>
+      </template>
+    </dom-if>
+  </template>
+  <script src="polymer-component.js"></script>
+</dom-module>

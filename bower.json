@@ -1,0 +1,18 @@
+{
+  "name": "poly-inc",
+  "version": "0.0.0",
+  "authors": [
+    "Sepand Parhami <sepandparhami@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "2.0-preview"
+  }
+}
